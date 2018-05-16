@@ -1,0 +1,24 @@
+.fb-btn {
+  width: 60%;
+  text-align: center;
+  color: #FFF;
+  background-color: #4c66a4;
+  border-color: #4c66a4;
+}
+
+.divider {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: #555555;
+}
+
+#middle-name-div, #last-name-div, #dob-day-div, #dob-year-div {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#daySelect, #yearSelect, #monthSelect {
+  width: 200px;
+}
+
+
