@@ -1,12 +1,13 @@
-<div class="container">
+<app-header-component></app-header-component>
+<div class="container registration-comntainer">
   <div class="row">
     <div class="col">
       <div class="">
-        <a href="" class="btn btn-primary btn-block fb-btn">
+        <a href="" class="btn btn-primary btn-block fb-btn formWidth">
           <i class="fb-icon"></i>Sign up with Facebook
         </a>
       </div>
-      <div class="strike width60 divider">
+      <div class="strike formWidth divider">
         <span>OR</span>
       </div>
       <div id="registration-form">
@@ -33,35 +34,119 @@
         </div>
 
         <div id="parent-guardian" style="clear: both">
-          <input type="checkbox" [(ngModel)]="registration.isParent"/> I am a parent / legal guardian
+          <label class="checkmark-label">I am a parent / legal guardian
+          <input type="checkbox" id="checkbox-guardian" [(ngModel)]="registration.isParent"/><span class="checkmark"></span>
+          </label>
           <div *ngIf="registration.isParent">
-            Student Registration
+            <div id="stu-name-detail-container">
+              <div id="stu-first-name-div" class="form-group float-left"
+                   [class.input-error]="!stuFName.valid && stuFName.touched">
+                <label for="firstName">Student's First Name</label>
+                <input type="text" class="form-control input-sm" id="stuFName" [pattern]="'[a-zA-Z0-9]+'"
+                       [required]=registration.isParent maxlength="30" [(ngModel)]="registration.student.firstName" #stuFName="ngModel">
+              </div>
+              <div class="form-group float-left" id="stu-middle-name-div"
+                   [class.input-error]="!stuMName.valid && stuMName.touched">
+                <label for="middleName">Student's Middle Name</label>
+                <input type="text" class="form-control input-sm" id="stuMName" maxlength="30" [pattern]="'[a-zA-Z0-9]+'"
+                       [(ngModel)]="registration.student.middleName" #stuMName="ngModel">
+              </div>
+              <div id="stu-last-name-div" class="form-group float-left"
+                   [class.input-error]="!stuLName.valid && stuLName.touched">
+                <label for="lastName">Student's Last Name</label>
+                <input type="text" class="form-control input-sm" name="stuLName" id="stuLName" [pattern]="'[a-zA-Z0-9]+'"
+                       [required]=registration.isParent maxlength="30" [(ngModel)]="registration.student.lastName" #stuLName="ngModel">
+              </div>
+            </div>
+
+            <div id="stu-dob-container"  style="clear: both;">
+              <div style="margin-top: 5px; margin-bottom: 5px;">Student Date Of Birth</div>
+              <div>
+                <div id="stu-dob-month-div" class="form-group float-left">
+                  <select id="stuMonthSelect">
+                    <option disabled value="-">--</option>
+                    <option *ngFor="let month of months" [value]="month">{{month}}</option>
+                  </select>
+                </div>
+                <div id="stu-dob-day-div" class="form-group float-left">
+                  <label for="daySelect"></label>
+                  <select id="stuDaySelect">
+                    <option disabled value="-">--</option>
+                    <option *ngFor="let day of days" [value]="day">{{day}}</option>
+                  </select>
+                </div>
+                <div id="stu-dob-year-div" class="form-group float-left">
+                  <label for="yearSelect"></label>
+                  <select id="stuYearSelect">
+                    <option disabled value="-">--</option>
+                    <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
-        <div id="dob-container">
+        <div id="dob-container"  style="clear: both;">
           <div style="margin-top: 5px; margin-bottom: 5px;">Date Of Birth</div>
           <div>
             <div id="dob-month-div" class="form-group float-left">
               <select id="monthSelect">
-                <option disabled>--</option>
+                <option disabled value="-">--</option>
                 <option *ngFor="let month of months" [value]="month">{{month}}</option>
               </select>
             </div>
             <div id="dob-day-div" class="form-group float-left">
               <label for="daySelect"></label>
               <select id="daySelect">
-                <option disabled>--</option>
+                <option disabled value="-">--</option>
                 <option *ngFor="let day of days" [value]="day">{{day}}</option>
               </select>
             </div>
             <div id="dob-year-div" class="form-group float-left">
               <label for="yearSelect"></label>
               <select id="yearSelect">
-                <option disabled>--</option>
+                <option disabled value="-">--</option>
                 <option *ngFor="let year of years" [value]="year">{{year}}</option>
               </select>
             </div>
           </div>
+        </div>
+        <div id="edu-container" style="clear: both;">
+          <div class="form-group" id="edu-div">
+            <label for="eduSelect">Highest level of education</label><br>
+
+            <select id="eduSelect" class="formWidth">
+              <option disabled selected>None selected</option>
+              <option *ngFor="let option of eduOptions" [value]="option">{{option}}</option>
+            </select>
+          </div>
+        </div>
+        <div id="email-container" style="clear: both;">
+          <div class="form-group" id="email-div" [class.input-error]="!emailAddr.valid && emailAddr.touched">
+            <label for="emailAddr">Email</label><br>
+            <input type="text" class="form-control input-sm formWidth" id="emailAddr" maxlength="30"
+                   [pattern]="'[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'"
+                   [(ngModel)]="registration.email" #emailAddr="ngModel">
+          </div>
+        </div>
+        <div id="pwd-container" style="clear: both;">
+          <div class="form-group" id="pwd-div" [class.input-error]="!pwd.valid && pwd.touched">
+            <label for="pwdInput">Password</label><br>
+            <input type="password" class="form-control input-sm formWidth" id="pwdInput" maxlength="30"
+                   [pattern]="'.{7,}'"
+                   [(ngModel)]="registration.password" #pwd="ngModel">
+          </div>
+        </div>
+
+        <div id="submitBtn-container">
+          <button class="btn formWidth btn-block btn-outline-success">Sign Up</button>
+        </div>
+        <div id="tandc">
+          <h6>
+            By signing up you agree to the Parchment <a href="/" class="underline muted">terms of use</a> and
+            <a href="/" class="underline muted"><span></span>service agreement</a>.
+          </h6>
         </div>
         <!--</form>-->
       </div>

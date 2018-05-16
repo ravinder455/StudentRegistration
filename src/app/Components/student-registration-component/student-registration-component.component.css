@@ -1,9 +1,17 @@
+.registration-comntainer {
+  margin-top : 5%;
+}
+
 .fb-btn {
-  width: 60%;
   text-align: center;
-  color: #FFF;
+  color: #FFFFFF !important;
+  text-decoration: none !important;
   background-color: #4c66a4;
   border-color: #4c66a4;
+}
+
+.formWidth {
+  width: 60%;
 }
 
 .divider {
@@ -12,13 +20,37 @@
   color: #555555;
 }
 
-#middle-name-div, #last-name-div, #dob-day-div, #dob-year-div {
+#middle-name-div, #last-name-div,
+#dob-day-div, #dob-year-div,
+#stu-middle-name-div, #stu-last-name-div,
+#stu-dob-day-div, #stu-dob-year-div {
   padding-left: 20px;
   padding-right: 20px;
 }
 
-#daySelect, #yearSelect, #monthSelect {
+#daySelect, #yearSelect, #monthSelect, #stuDaySelect, #stuMonthSelect, #stuYearSelect {
   width: 200px;
 }
 
+#edu-container, #dob-container {
+  padding-top: 3px;
+}
 
+#submitBtn-container {
+  padding-top: 20px;
+}
+
+#tandc h6 {
+  font-size: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+a, a:visited{
+  color: #65645A;
+  text-decoration: underline;
+}
+
+#checkbox-guardian {
+  font-size: 20px;
+}
