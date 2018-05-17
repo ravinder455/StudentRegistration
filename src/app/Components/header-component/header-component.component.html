@@ -1,0 +1,15 @@
+
+<nav class="navbar navbar-dark top-nav" [@navState]="topNav">
+  <span class="navbar-toggler-icon navbar-icon" (click)="toggleNav()"></span>
+</nav>
+
+<div [@navState]="sideNav">
+  <div class="sideNav" *ngIf="sideNav === 'show'">
+    <div class="close-container">
+      <div>
+        <i class="fas fa-sign-in-alt"></i>
+      </div>
+      <span class="close close-btn" (click)="toggleNav()">&times;</span>
+    </div>
+  </div>
+</div>
